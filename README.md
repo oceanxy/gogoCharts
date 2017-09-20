@@ -1,3 +1,4 @@
+[go to page](http://www.xieyangogo.cn/gogoCharts/pages/bars)
 ## 项目结构说明
 ### 目录说明
 - template：handlebars模板文件；
