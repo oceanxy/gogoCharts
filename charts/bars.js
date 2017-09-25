@@ -717,7 +717,7 @@ define(function (require) {
                 })
 
             // 初始化轴或更新轴
-            if (config.xAxis.axisLine.show) {
+            if (config.xAxis.gridLine.show || config.xAxis.axisLine.show) {
                 if (!chart.select('.axes .axis-x').node()) {
                     chart.select('.axes')
                         .append('g')
@@ -729,6 +729,10 @@ define(function (require) {
                     })
                     .attr(config.xAxis.axisLine.style)
                     .call(xAxis)
+
+                if (!config.xAxis.axisLine.show) {
+                    chart.select('.axes').select('.axis-x .domain').attr('opacity', 0)
+                }
             }
 
             //网格线
@@ -859,7 +863,7 @@ define(function (require) {
                     }
                 })
 
-            if (config.yAxis.axisLine.show) {
+            if (config.yAxis.gridLine.show || config.yAxis.axisLine.show) {
                 if (!chart.select('.axes .axis-y').node()) {
                     chart.select('.axes')
                         .append('g')
@@ -873,6 +877,10 @@ define(function (require) {
                     })
                     .attr(config.yAxis.axisLine.style)
                     .call(yAxis)
+
+                if (!config.yAxis.axisLine.show) {
+                    chart.select('.axes').select('.axis-y .domain').attr('opacity', 0)
+                }
             }
 
             // 网格线
@@ -897,13 +905,6 @@ define(function (require) {
             chart.select('.axis-y')
                 .selectAll('text')
                 .attr(config.yAxis.axisLine.textStyle)
-                .attr('opacity', function () {
-                    if (config.yAxis.axisLine.show) {
-                        return config.yAxis.axisLine.textStyle.opacity || 1
-                    } else {
-                        return 0
-                    }
-                })
         },
 
         /**
@@ -946,9 +947,21 @@ define(function (require) {
                         rect: function () {
                             d3.select(group)
                                 .select('rect')
+                                .attr('width', function () {
+                                    if (config.sharpOrient === 'x') {
+                                        return itemStyle.size
+                                    } else {
+                                        return 0
+                                    }
+                                })
+                                .attr('height', function () {
+                                    if (config.sharpOrient === 'x') {
+                                        return 0
+                                    } else {
+                                        return itemStyle.size
+                                    }
+                                })
                                 .attr({
-                                    width: 0,
-                                    height: 0,
                                     x: 0,
                                     y: 0,
                                     rx: itemStyle.radius,
@@ -977,20 +990,6 @@ define(function (require) {
                                         return itemStyle.size
                                     }
                                 })
-                                // .attr('x', function () {
-                                //     if (config.sharpOrient === 'x') {
-                                //         return 0
-                                //     } else {
-                                //         return 0
-                                //     }
-                                // })
-                                // .attr('y', function () {
-                                //     if (config.sharpOrient === 'x') {
-                                //         return 0
-                                //     } else {
-                                //         return -itemStyle.size / 2
-                                //     }
-                                // })
                                 .style('fill', function () {
                                     if (itemStyle.gradient.enable) {
                                         return 'url(#' + itemStyle.gradient.id + ')'
@@ -1003,10 +1002,45 @@ define(function (require) {
                             d3.select(group)
                                 .select('text')
                                 .text(d.value)
-                                .attr({
-                                    x: 0,
-                                    y: 0,
-                                    opacity: 0
+                                .attr('opacity', 0)
+                                .attr('x', function () {
+                                    if (config.sharpOrient === 'x') {
+                                        return -itemStyle.size / 2
+                                    } else {
+                                        var x = 0
+                                        var textWidth = this.getBBox().width
+                                        var spacing = itemStyle.textStyle.spacing
+
+                                        if (itemStyle.textStyle.outer) {
+                                            return x + spacing
+                                        } else {
+                                            return x - textWidth - spacing
+                                        }
+                                    }
+                                })
+                                .attr('y', function () {
+                                    var textHeight = this.getBBox().height
+
+                                    if (config.sharpOrient === 'x') {
+                                        var y = -scales[1](scales[1].domain()[1])
+                                        var spacing = itemStyle.textStyle.spacing
+
+                                        if (itemStyle.textStyle.outer) {
+                                            return y - spacing
+                                        } else {
+                                            return y + textHeight + spacing
+                                        }
+                                    } else {
+                                        return (itemStyle.size + textHeight / 2) / 2
+                                    }
+                                })
+                                .style('fill', itemStyle.textStyle.color)
+                                .style('font-size', itemStyle.textStyle.fontSize)
+                                .style('text-anchor', 'middle')
+                                .attr('transform', function () {
+                                    if (config.sharpOrient === 'x') {
+                                        return 'rotate(180)'
+                                    }
                                 })
                                 .transition()
                                 .duration(function () {
@@ -1026,7 +1060,7 @@ define(function (require) {
                                         var spacing = itemStyle.textStyle.spacing
 
                                         if (itemStyle.textStyle.outer) {
-                                            return x + textWidth + spacing
+                                            return x + textWidth / 2 + spacing
                                         } else {
                                             return x - textWidth - spacing
                                         }
@@ -1045,15 +1079,7 @@ define(function (require) {
                                             return y + textHeight + spacing
                                         }
                                     } else {
-                                        return (itemStyle.size + textHeight) / 2
-                                    }
-                                })
-                                .style('fill', itemStyle.textStyle.color)
-                                .style('font-size', itemStyle.textStyle.fontSize)
-                                .style('text-anchor', 'middle')
-                                .attr('transform', function () {
-                                    if (config.sharpOrient === 'x') {
-                                        return 'rotate(180)'
+                                        return (itemStyle.size + textHeight / 2) / 2
                                     }
                                 })
                                 .attr('opacity', function () {
