@@ -15,6 +15,11 @@ define(function (require) {
 
     var chart = {
         /**
+         * 数据长度
+         */
+        dataLength: 0,
+
+        /**
          * 柱状图默认配置项
          */
         defaultSetting: function () {
@@ -495,7 +500,9 @@ define(function (require) {
             var config = _.merge({}, this.defaultSetting(), option)
             var yAxisData = []
             var xAxisData = []
-            for (var i = 0, len = data.length; i < len; i++) {
+            this.dataLength = data.length
+
+            for (var i = 0; i < this.dataLength; i++) {
                 if (config.sharpOrient !== 'x') {
                     yAxisData.push(data[i].name)
                     xAxisData.push(data[i].value)
@@ -508,7 +515,6 @@ define(function (require) {
             // 创建比例尺
             var xScale = this.getXScale(config, xAxisData)
             var yScale = this.getYScale(config, yAxisData)
-
 
             // 初始化图表结构以及建立图表与数据的联系
             var chart = this.initChart(id, data, config, [xScale, yScale])
@@ -535,6 +541,7 @@ define(function (require) {
             var padding = config.padding
             var width = config.width - padding.right - padding.left
             var height = config.height - padding.top - padding.bottom
+            var dataLength = this.dataLength
 
             if (d3.select('.' + id).select('svg.cont-' + id).node()) {
                 chart = d3.select('.' + id).select('svg.cont-' + id)
@@ -829,6 +836,8 @@ define(function (require) {
          */
         drawYAxis: function (chart, config, data, yScale) {
             var isNumberAxis = !isNaN(data[0])
+            var dataLength = this.dataLength
+
             this.setAxesTicks(isNumberAxis, data.length, config.yAxis)
 
             // 定义y轴样式
@@ -859,7 +868,7 @@ define(function (require) {
                             return d
                         }
                     } else {
-                        return data[i]
+                        return data[dataLength - 1 - i]
                     }
                 })
 
