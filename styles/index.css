@@ -6,11 +6,3 @@
 body {
   background: #234;
 }
-
-.list {
-  position: absolute;
-  left: 400px;
-  color: red;
-  list-style: none;
-  top: 30px;
-}

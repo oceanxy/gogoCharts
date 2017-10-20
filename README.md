@@ -1,4 +1,5 @@
-[go to page](http://www.xieyangogo.cn/gogoCharts/pages/bars)
+[柱状图 demo](http://www.xieyangogo.cn/gogoCharts/pages/bars)
+
 ## 项目结构说明
 ### 目录说明
 - template：handlebars模板文件；
@@ -38,11 +39,3 @@
 - 变量定义，作用域局限于函数级；
 - mock数据注释：哪个页面下的哪个模块里的那个接口；
 - CSS前缀，根据项目对浏览器的要求来定。
-
-### 使用说明
-- 下载该项目，下载地址：`http://192.168.1.170/hyfe/generator-seajs`；
-- 在`http://192.168.1.170/hyfe/`下创建新的项目，项目名称使用实际开发的项目名称；
-- 将新创建的项目clone到本地：`git clone http://192.168.1.170/hyfe/xxx`；
-- 将下载的`generator-seajs`目录下的所有内容拷贝到新建的项目文件夹中，除过`.git`文件夹；
-- 根据实际情况修改对应的文件或文件内容。
-

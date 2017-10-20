@@ -23,9 +23,8 @@ define(function (require) {
         PAGE_WIDTH: 1920,
         PAGE_HEIGHT: 1080,
 
-        // bars 接口
-        barH: onlineApiHost + 'mockData/barH',
-        barV: onlineApiHost + 'mockData/barV'
+        // mock 接口
+        data: onlineApiHost + 'mockData/'
 
     }
 

@@ -32,11 +32,11 @@ define(function (require) {
          * @param {Object} data 列表数据
          *
          */
-        barH: function (data) {
+        bar1: function (data) {
             var config = {
                 sharpOrient: 'y',
-                width: 1820,
-                height: 570,
+                width: '100%',
+                height: '100%',
                 padding: {
                     top: 30,
                     right: 100,
@@ -58,7 +58,7 @@ define(function (require) {
                         }
                     },
                     gradient: {
-                        id: 'gra-ADB',
+                        id: 'gra-t-l',
                         color: {
                             start: '#a60a54',
                             end: '#3c31ed'
@@ -89,7 +89,6 @@ define(function (require) {
                         },
                         textStyle: {
                             'font-size': 24,
-                            'text-anchor': 'middle',
                             'fill': '#5391ff',
                             'stroke': 'none',
                             'font-family': 'digifacewide'
@@ -123,8 +122,7 @@ define(function (require) {
                             'font-size': 24,
                             fill: '#e3e8ec',
                             stroke: 'none',
-                            'stroke-width': 0,
-                            'text-anchor': 'end'
+                            'stroke-width': 0
                         }
                     },
                     gridLine: {
@@ -133,7 +131,7 @@ define(function (require) {
                     tickPadding: 100
                 }
             }
-            bar.render('bar-h', data, config)
+            bar.render('bar1', data, config)
         },
 
         /**
@@ -142,33 +140,233 @@ define(function (require) {
          * @param {Object} data 列表数据
          *
          */
-        barV: function (data) {
+        bar2: function (data) {
             var config = {
-                sharpOrient: 'x',
-                width: 1820,
-                height: 530,
+                sharpOrient: 'y',
+                width: '100%',
+                height: '100%',
                 animation: {
-                    ease: 'out-in'
+                    ease: 'out'
                 },
                 padding: {
                     top: 50,
                     right: 70,
                     bottom: 100,
-                    left: 200
+                    left: 150
                 },
                 itemStyle: {
-                    size: 48,
+                    size: 12,
                     textStyle: {
                         show: true,
                         spacing: 10,
-                        color: '#a60a54',
-                        fontSize: 30
+                        color: '#10dec3',
+                        fontSize: 16
                     },
                     gradient: {
-                        id: 'gra-CNT',
+                        id: 'gra-t-r',
                         color: {
-                            start: '#a60a54',
-                            end: '#3c31ed'
+                            start: '#b4e5df',
+                            end: '#10dec3'
+                        },
+                        opacity: {
+                            start: 0,
+                            end: 1
+                        }
+                    }
+                },
+                xAxis: {
+                    zero: 0.5,
+                    end: 0.5,
+                    innerTickSize: 0,
+                    outerTickSize: 0,
+                    scale: 'pow',
+                    axisLine: {
+                        style: {
+                            'fill': 'none',
+                            'stroke': '#4b4f89',
+                            'stroke-width': 1
+                        },
+                        textStyle: {
+                            'font-size': 16,
+                            'fill': '#7d96de',
+                            'font-family': '微软雅黑',
+                            'stroke': 'none',
+                            'stroke-width': 0
+                        }
+                    },
+                    gridLine: {
+                        style: {
+                            'stroke': '#181c3a',
+                            'stroke-width': 2
+                        }
+                    },
+                    tickPadding: 15
+                },
+                yAxis: {
+                    zero: 0.5,
+                    end: 0.5,
+                    innerTickSize: 0,
+                    outerTickSize: 0,
+                    axisLine: {
+                        style: {
+                            fill: 'none',
+                            stroke: '#363963',
+                            'stroke-width': 1
+                        },
+                        textStyle: {
+                            'font-size': 18,
+                            fill: '#8a9bd4',
+                            'font-family': '微软雅黑',
+                            stroke: 'none',
+                            'stroke-width': 0
+                        }
+                    },
+                    gridLine: {
+                        style: {
+                            'stroke-dasharray': '4 4 8 4',
+                            'stroke-width': 1,
+                            'stroke': '#3a4674'
+                        }
+                    },
+                    tickPadding: 20
+                }
+            }
+            bar.render('bar2', data, config)
+        },
+
+        /**
+         * bar-v
+         *
+         * @param {Object} data 列表数据
+         *
+         */
+        bar3: function (data) {
+            var config = {
+                sharpOrient: 'x',
+                width: '100%',
+                height: '100%',
+                animation: {
+                    ease: 'out-in'
+                },
+                padding: {
+                    top: 50,
+                    right: 20,
+                    bottom: 100,
+                    left: 70
+                },
+                itemStyle: {
+                    size: 24,
+                    textStyle: {
+                        show: true,
+                        spacing: 10,
+                        color: '#7e954d',
+                        fontSize: 16
+                    },
+                    gradient: {
+                        id: 'gra-b-l',
+                        color: {
+                            start: '#8b9478',
+                            end: '#7e954d'
+                        },
+                        opacity: {
+                            start: 1,
+                            end: 1
+                        }
+                    }
+                },
+                xAxis: {
+                    zero: 0.5,
+                    end: 0.5,
+                    innerTickSize: 6,
+                    outerTickSize: 6,
+                    axisLine: {
+                        style: {
+                            'fill': 'none',
+                            'stroke': '#4b4f89',
+                            'stroke-width': 2
+                        },
+                        textStyle: {
+                            'font-size': 16,
+                            'fill': '#7d96de',
+                            'font-family': '微软雅黑',
+                            'stroke': 'none',
+                            'stroke-width': 0
+                        }
+                    },
+                    gridLine: {
+                        style: {
+                            'stroke': '#181c3a',
+                            'stroke-width': 2
+                        }
+                    },
+                    tickPadding: 16
+                },
+                yAxis: {
+                    zero: 0.5,
+                    end: 0.5,
+                    innerTickSize: 6,
+                    outerTickSize: 6,
+                    axisLine: {
+                        style: {
+                            fill: 'none',
+                            stroke: '#363963',
+                            'stroke-width': 2
+                        },
+                        textStyle: {
+                            'font-size': 16,
+                            fill: '#8a9bd4',
+                            'font-family': '微软雅黑',
+                            stroke: 'none',
+                            'stroke-width': 0
+                        }
+                    },
+                    gridLine: {
+                        style: {
+                            'stroke-dasharray': '4 4 8 4',
+                            'stroke-width': 1,
+                            'stroke': '#3a4674'
+                        }
+                    },
+                    tickPadding: 20,
+                    ticks: 6
+                }
+            }
+            bar.render('bar3', data, config)
+        },
+
+        /**
+         * bar-v
+         *
+         * @param {Object} data 列表数据
+         *
+         */
+        bar4: function (data) {
+            var config = {
+                sharpOrient: 'x',
+                width: '100%',
+                height: '100%',
+                animation: {
+                    ease: 'out-in'
+                },
+                padding: {
+                    top: 50,
+                    right: 20,
+                    bottom: 100,
+                    left: 150
+                },
+                itemStyle: {
+                    size: 45,
+                    textStyle: {
+                        show: true,
+                        spacing: 10,
+                        color: '#291ecc',
+                        fontSize: 20
+                    },
+                    gradient: {
+                        id: 'gra-b-r',
+                        color: {
+                            start: '#291ecc',
+                            end: '#31c3dd'
                         },
                         opacity: {
                             start: 0,
@@ -188,12 +386,11 @@ define(function (require) {
                             'stroke-width': 2
                         },
                         textStyle: {
-                            'font-size': 24,
+                            'font-size': 16,
                             'fill': '#7d96de',
                             'font-family': '微软雅黑',
                             'stroke': 'none',
-                            'stroke-width': 0,
-                            'text-anchor': 'middle'
+                            'stroke-width': 0
                         }
                     },
                     gridLine: {
@@ -202,13 +399,14 @@ define(function (require) {
                             'stroke-width': 2
                         }
                     },
-                    tickPadding: 30
+                    tickPadding: 20
                 },
                 yAxis: {
                     zero: 0.5,
                     end: 0.5,
                     innerTickSize: 6,
                     outerTickSize: 6,
+                    scale: 'sqrt',
                     axisLine: {
                         style: {
                             fill: 'none',
@@ -216,12 +414,11 @@ define(function (require) {
                             'stroke-width': 2
                         },
                         textStyle: {
-                            'font-size': 28,
+                            'font-size': 18,
                             fill: '#8a9bd4',
                             'font-family': '微软雅黑',
                             stroke: 'none',
-                            'stroke-width': 0,
-                            'text-anchor': 'end'
+                            'stroke-width': 0
                         }
                     },
                     gridLine: {
@@ -235,7 +432,7 @@ define(function (require) {
                     ticks: 6
                 }
             }
-            bar.render('bar-v', data, config)
+            bar.render('bar4', data, config)
         },
 
         init: function () {
@@ -258,15 +455,27 @@ define(function (require) {
 
             self.render()
 
-            request.sendAjax(baseConfig.barV, function (data) {
+            request.sendAjax(baseConfig.data + 'bar1', function (data) {
                 if (data && data.bar) {
-                    self.barV(data.bar)
+                    self.bar1(data.bar)
                 }
             })
 
-            request.sendAjax(baseConfig.barH, function (data) {
+            request.sendAjax(baseConfig.data + 'bar2', function (data) {
                 if (data && data.bar) {
-                    self.barH(data.bar)
+                    self.bar2(data.bar)
+                }
+            })
+
+            request.sendAjax(baseConfig.data + 'bar3', function (data) {
+                if (data && data.bar) {
+                    self.bar3(data.bar)
+                }
+            })
+
+            request.sendAjax(baseConfig.data + 'bar4', function (data) {
+                if (data && data.bar) {
+                    self.bar4(data.bar)
                 }
             })
         }

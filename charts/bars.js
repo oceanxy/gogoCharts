@@ -309,16 +309,21 @@ define(function (require) {
                      */
                     outerTickSize: 6,
                     /**
-                     * 比例尺类型 （'linear'||'pow'||'sqrt'） 线性比例尺，指数比例尺，对数比例尺
+                     * 比例尺类型 （'linear'||'pow'||'sqrt'||'log'） 线性比例尺，指数比例尺，平方根比例尺，对数比例尺
+                     *
+                     *      默认 'linear' 线性比例尺 y = m * x + b
                      *
                      *      d3.scale.pow().domain([0,100]).range([0,700]).exponent(2);
-                     * 指数比例尺与线性比例尺相似，区别是pow比例尺首先对输入数据进行指数变换，
-                     * 默认指数为1，所以默认情况下也是数值 1:1 的缩放。
+                     *      指数比例尺使用数学公式 y = m * x^k + b 映射 domain 与 range 之间的关系，k 用 exponent() 函数来设定
+                     *      默认指数为1，所以默认情况下也是数值 1:1 的缩放，等同于 linear 。
                      *
                      *      d3.scale.sqrt().domain([0,100]).range([0,700])
-                     *      平方根比例尺是pow比例尺的特殊类型，相当于 d3.scale.pow().exponent(0.5)
+                     *      平方根比例尺是 pow 比例尺的特殊类型，相当于 k = 0.5 的指数比例尺
+                     *      如 d3.scale.pow().exponent(0.5)
                      *
-                     *      默认 'linear'
+                     *      d3.scale.log().domain([10,100]).range([0,700])
+                     *      对数比例尺使用数学公式 y = m * log(x) + b 映射 domain 与 range 之间的关系
+                     *      使用这个比例尺有一个比较苛刻的要求，定义域的开始值（x）必须大于0开始，因为对数的底数不许为小于等于 0 的数
                      *
                      * @type {string}
                      */
@@ -379,7 +384,14 @@ define(function (require) {
                         textStyle: {
                             'fill': 'white',
                             'text-anchor': 'middle'
-                        }
+                        },
+                        /**
+                         * 由于图表的特性，当 X 轴的刻度文本宽度过低以致于影响到相邻的刻度文本的显示时
+                         * 自动使用这个值来倾泻 X 轴的刻度文本
+                         *
+                         * 默认 -45 度
+                         */
+                        textRotate: -45
                     },
                     /**
                      * X轴上的网格线
@@ -454,6 +466,7 @@ define(function (require) {
                     innerTickSize: 1,
                     outerTickSize: 1,
                     scale: 'linear',
+                    exponent: 2,
                     unit: false,
                     axisLine: {
                         show: true,
@@ -498,6 +511,15 @@ define(function (require) {
         render: function (id, data, option) {
             //处理数据
             var config = _.merge({}, this.defaultSetting(), option)
+
+            //如果宽高传入的是百分数，则转化为数字
+            if(typeof config.width !== 'number'){
+                config.width = document.getElementsByClassName(id)[0].clientWidth || 200
+            }
+            if(typeof config.height !== 'number'){
+                config.height = document.getElementsByClassName(id)[0].clientHeight || 200
+            }
+
             var yAxisData = []
             var xAxisData = []
             this.dataLength = data.length
@@ -539,6 +561,7 @@ define(function (require) {
         initChart: function (id, data, config, scales) {
             var chart
             var padding = config.padding
+
             var width = config.width - padding.right - padding.left
             var height = config.height - padding.top - padding.bottom
             var dataLength = this.dataLength
@@ -632,6 +655,8 @@ define(function (require) {
                     return d3.scale.pow().exponent(config[axis].exponent)
                 case 'sqrt':
                     return d3.scale.sqrt()
+                case 'log':
+                    return d3.scale.log()
                 default://linear or other scale
                     return d3.scale.linear()
             }
@@ -783,8 +808,11 @@ define(function (require) {
                     .transition()
                     .duration(500)
                     .attr('transform', function () {
-                        return 'rotate(-25),translate(-10, 5)'
+                        return 'rotate(' + config.xAxis.axisLine.textRotate + '),translate(-10, 5)'
                     })
+                    .attr('y', 6)
+                    .attr('x', 10)
+                    .style('text-anchor', 'end')
             }
         },
 
