@@ -179,7 +179,8 @@ define(function (require) {
                     end: 0.5,
                     innerTickSize: 0,
                     outerTickSize: 0,
-                    scale: 'pow',
+                    scale: 'sqrt',
+                    ticks: 5,
                     axisLine: {
                         style: {
                             'fill': 'none',
@@ -200,7 +201,9 @@ define(function (require) {
                             'stroke-width': 2
                         }
                     },
-                    tickPadding: 15
+                    tickPadding: 15,
+                    domainStart: true,
+                    bufferAxis: true
                 },
                 yAxis: {
                     zero: 0.5,
@@ -302,10 +305,9 @@ define(function (require) {
                     tickPadding: 16
                 },
                 yAxis: {
-                    zero: 0.5,
-                    end: 0.5,
                     innerTickSize: 6,
                     outerTickSize: 6,
+                    scale: 'pow',
                     axisLine: {
                         style: {
                             fill: 'none',
@@ -360,7 +362,7 @@ define(function (require) {
                         show: true,
                         spacing: 10,
                         color: '#291ecc',
-                        fontSize: 20
+                        fontSize: 16
                     },
                     gradient: {
                         id: 'gra-b-r',

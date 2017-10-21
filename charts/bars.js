@@ -449,7 +449,7 @@ define(function (require) {
                      *      为了图表的美观，可以将刻度N之前的轴压缩一定的倍率，使得各柱状条的
                      *      比例更为明显
                      *
-                     *      该属性仅在数字轴生效，默认false
+                     *      该属性仅在 domainStart 属性为 true 时且该轴为数字轴时生效，默认false
                      *
                      * @type {boolean}
                      */
