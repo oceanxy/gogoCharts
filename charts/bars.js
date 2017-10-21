@@ -497,7 +497,7 @@ define(function (require) {
         /**
          * 渲染图表
          * @param {string} id 图表所在的外层容器的唯一标识
-         * @param data 渲染图表所需数据
+         * @param {Object} data 渲染图表所需数据
          *             example:
          *              [
          *                  {
@@ -512,7 +512,7 @@ define(function (require) {
             //处理数据
             var config = _.merge({}, this.defaultSetting(), option)
 
-            //如果宽高传入的是百分数，则转化为数字
+            //如果传入的宽高值是一个百分数，则转化为适应当前 DOM 的数字值
             if(typeof config.width !== 'number'){
                 config.width = document.getElementsByClassName(id)[0].clientWidth || 200
             }
@@ -564,7 +564,6 @@ define(function (require) {
 
             var width = config.width - padding.right - padding.left
             var height = config.height - padding.top - padding.bottom
-            var dataLength = this.dataLength
 
             if (d3.select('.' + id).select('svg.cont-' + id).node()) {
                 chart = d3.select('.' + id).select('svg.cont-' + id)
