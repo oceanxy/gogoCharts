@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>框选区域图表</title>
+
+        <link rel="stylesheet" type="text/css" href="../styles/common.css">
+        <link rel="stylesheet" type="text/css" href="../styles/lines.css">
+        <link rel="stylesheet" type="text/css" href="../styles/selectArea.css">
+        <link rel="stylesheet" type="text/css" href="../styles/drag-bar.css">
+    </head>
+    <body>
+        <!--HTML结构开始-->
+        <button id="switch">switch data</button>
+        <button id="autoSwitch">auto switch data</button>
+
+        <button id="loadTag">load tag</button>
+        <button id="saveTag">save tag</button>
+        <button id="clearTag">clear all tag</button>
+
+        <label>选择颜色：<input id="rectColor" type="color" style="vertical-align: middle"></label>
+        <div class="chart"></div>
+        <div id="guide" style="position: absolute">
+            <input placeholder="input tag name">
+        </div>
+
+        <div class="cl-content">
+            <div class="drag-bar" data-curVal="0">
+                <span class="drag-start">0</span>
+                <div class="drag-shape">
+                    <div class="drag-bar-process"></div>
+                    <div class="drag-text-process s">
+                        <span class="drag-cur">0</span>
+                    </div>
+                    <div class="drag-text-process e">
+                        <span class="drag-cur">0</span>
+                    </div>
+                </div>
+                <span class="drag-end">0</span>
+            </div>
+        </div>
+        <!--HTML结构开始结束-->
+        <!-- 错误提示 -->
+        <div class="error-dialog"></div>
+        <!--引入JS文件，并且页面上最多只引入这三个JS文件，sea-text可根据实际情况而定，当需要解析handlebars模板时才需引入-->
+        <script type="text/javascript" src='../sea-modules/sea.js'></script>
+        <script type="text/javascript" src='../sea-modules/sea-text.js'></script>
+        <script type="text/javascript" src='../seajs.config.js'></script>
+        <script type="text/javascript">
+            seajs.use(['../scripts/selectArea.js'], function(home){
+                home.init()
+            })
+        </script>
+    </body>
+</html>

@@ -1,0 +1,125 @@
+.drag-bar {
+  height: 20px;
+  text-align: center;
+  display: inline-block;
+  padding: 15px 0 5px 0; }
+
+.drag-bar .drag-start, .drag-bar .drag-end {
+  display: inline-block;
+  *zoom: 1;
+  *display: inline;
+  overflow: hidden;
+  padding: 0 10px;
+  vertical-align: middle; }
+
+.drag-bar .drag-shape {
+  position: relative;
+  display: inline-block;
+  width: auto;
+  height: 5px;
+  vertical-align: middle;
+  box-shadow: 0 0 2px 1px #A9A9A9;
+  border: 1px solid #A9A9A9;
+  border-radius: 4px;
+  background: #797979;
+  z-index: 10; }
+
+.drag-bar .drag-shape .drag-bar-process {
+  position: absolute;
+  top: 0;
+  border: 1px solid #ffffff;
+  left: 0;
+  width: 0;
+  height: 3px;
+  background: #44b5df;
+  border-radius: 4px; }
+
+.drag-bar .drag-shape .drag-text-process {
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  border: 5px solid #ffffff;
+  border-radius: 7px;
+  box-shadow: 0 0 2px 1px #A9A9A9;
+  background: #797979;
+  top: -5px;
+  left: 0;
+  cursor: pointer;
+  z-index: 11; }
+
+.drag-bar .drag-shape .drag-text-process span {
+  position: absolute;
+  width: 100px;
+  text-align: center;
+  top: -25px;
+  left: -50px; }
+
+.layer-tool-bar {
+  line-height: 30px;
+  vertical-align: middle; }
+
+.layer-tool-bar input {
+  vertical-align: middle; }
+
+.layer-tool-bar .layer-name {
+  margin-left: 5px;
+  display: inline-block;
+  *zoom: 1;
+  *display: inline;
+  width: 90px;
+  *width: 70px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  vertical-align: middle; }
+
+.layer-tool-bar .layer-drag-bar {
+  width: 165px;
+  height: 10px;
+  display: inline-block;
+  *zoom: 1;
+  *display: inline;
+  position: relative; }
+
+.layer-drag-bar .drag-bar-process {
+  width: 122px;
+  height: 10px;
+  float: left;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px; }
+
+.layer-drag-bar .drag-button {
+  height: 22px;
+  width: 10px;
+  background: #fff;
+  cursor: pointer;
+  position: absolute;
+  left: 0;
+  top: -6px;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px; }
+
+.layer-drag-bar .draging {
+  background: #28A2E0; }
+
+.layer-drag-bar .drag-button .drg-line {
+  width: 2px;
+  height: 16px;
+  margin: 3px auto;
+  background: #28A2E0; }
+
+.layer-drag-bar .draging .drg-line {
+  background: #fff; }
+
+.layer-drag-bar .drag-bar-value {
+  float: left;
+  font-size: 12px;
+  line-height: 8px;
+  padding-left: 10px; }
+
+.layer-tool-bar .bar-close {
+  margin-left: 5px;
+  cursor: pointer; }
+
+/*# sourceMappingURL=drag-bar.css.map */
