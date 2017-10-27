@@ -512,5 +512,6 @@ Y 轴配置 **yAxis** @type {Object}
 - mine.js：类型文件，供server.js文件使用；
 - server.js：简单的Nodejs服务器，用于启动服务。
 
-启动服务： `node server.js`
-访问: `localhost:3000/pages/xxx.html`
+### 运行
+    启动服务： `node server`
+    访问: `localhost:3000/pages/xxx.html`
