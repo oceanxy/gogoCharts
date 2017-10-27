@@ -440,7 +440,6 @@ define(function (require) {
               return self.x(d.x1) + self.margin.left
             })
             .attr('width', function (d) {
-              console.log(d.x2, d.x1)
               return self.x(d.x2) - self.x(d.x1)
             })
           

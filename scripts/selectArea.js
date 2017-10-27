@@ -18,7 +18,7 @@ define(function (require) {
      */
     var xc, xm, x1, x2
     var tagData = []
-    var image = '../images/lineChart/del.png'
+    var image = '../images/lines-del.png'
     /** 选框状态
      * @type {boolean}
      */
@@ -88,7 +88,6 @@ define(function (require) {
                 chart: lineChart,
                 status: status,
                 fun: function (curValue) {
-                    console.log(curValue)
                     lineChart
                         .setX(curValue.start, curValue.end)
                         .render()
