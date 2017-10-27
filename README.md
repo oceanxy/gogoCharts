@@ -1,5 +1,28 @@
 # Bars Chart
 
+### 调用方式
+
+```javascript
+var data = [
+             {"name": "xxx1", "value": 9306},
+             {"name": "xxx2", "value": 22109},
+             {"name": "xxx3", "value": 64761},
+             {"name": "xxx4", "value": 13119},
+             {"name": "xxx5", "value": 67544}
+           ]
+
+var bar = require('barChart')
+
+var config = {
+  sharpOrient: 'x',
+  width: 500,
+  height: 300
+}
+
+bar.render('bar', data, config)
+```
+
+
 ### 柱状图配置列表：
   
 渲染图形到哪一个轴上 **sharpOrient** @type {string}
@@ -456,7 +479,7 @@ Y 轴配置 **yAxis** @type {Object}
 >
 >     该属性仅在 domainStart 属性为 true 时且该轴为数字轴时生效，默认false
 
-## 项目### 目录说明
+### 项目目录说明
 
 - template：handlebars模板文件；
 - mockData：使用mockjs生成的测试数据；
