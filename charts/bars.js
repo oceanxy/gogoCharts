@@ -116,15 +116,15 @@ define(function (require) {
            *
            *      结构示例：
            *          {{
-                     *              image: {
-                     *                  attr: {
-                     *                      'href': 'xxx/xxx.png',
-                     *                      'width': 100,
-                     *                      'height': 100
-                     *                  },
-                     *                  sort: 1
-                     *              }
-                     *          }}
+           *              image: {
+           *                  attr: {
+           *                      'href': 'xxx/xxx.png',
+           *                      'width': 100,
+           *                      'height': 100
+           *                  },
+           *                  sort: 1
+           *              }
+           *          }}
            *
            *      image: 附加的元素标签名称
            *      attr: 附加元素的属性集合和css样式集合，如 width、fill、url、'font-size'等
