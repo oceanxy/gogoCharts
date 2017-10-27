@@ -2,6 +2,16 @@
 
 ### 调用方式
 
+```html
+<head>
+  <link href="style.css">
+</head>
+<body>
+  <div class="bar"></div>
+</body>
+
+```
+
 ```javascript
 var data = [
              {"name": "xxx1", "value": 9306},
