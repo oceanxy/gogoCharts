@@ -14,11 +14,11 @@
 
 ```javascript
 var data = [
-             {"name": "xxx1", "value": 9306},
-             {"name": "xxx2", "value": 22109},
-             {"name": "xxx3", "value": 64761},
-             {"name": "xxx4", "value": 13119},
-             {"name": "xxx5", "value": 67544}
+             {name: "xxx1", value: 9306},
+             {name: "xxx2", value: 22109},
+             {name: "xxx3", value: 64761},
+             {name: "xxx4", value: 13119},
+             {name: "xxx5", value: 67544}
            ]
 
 var bar = require('barChart')
