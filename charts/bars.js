@@ -613,7 +613,7 @@ define(function (require) {
             componentsArray.splice(components[obj].sort - 1, 0, obj)
           }
           
-          //根据新的序列初始化结构
+          // 根据新的序列初始化结构
           for (obj in componentsArray) {
             d3.select(this).append(componentsArray[obj])
           }
@@ -632,7 +632,7 @@ define(function (require) {
             
           } else {
             p1 = 0
-            p2 = scales[1](i + config.xAxis.zero * 2) - config.itemStyle.size / 2
+            p2 = bodyHeight - scales[1](i + config.xAxis.zero * 2) - config.itemStyle.size / 2
             rotate = ''
           }
           return 'translate(' + p1 + ',' + p2 + ')' + rotate
