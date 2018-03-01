@@ -1,8 +1,10 @@
 # Bars Chart
 
-### [demo](http://www.xieyangogo.cn/gogoCharts/pages/bars)
+## [gogoCharts page](http://www.xieyangogo.cn/root/d3/)
 
-### 调用方式
+## 1. 柱状图
+
+#### 调用方式
 
 ```html
 <head>
@@ -35,7 +37,7 @@ bar.render('bar', data, config)
 ```
 
 
-### 柱状图配置列表：
+#### 配置列表：
   
 渲染图形到哪一个轴上 **sharpOrient** @type {string}
 
@@ -491,7 +493,9 @@ Y 轴配置 **yAxis** @type {Object}
 >
 >     该属性仅在 domainStart 属性为 true 时且该轴为数字轴时生效，默认false
 
-### 项目目录说明
+## 2.线框图（同柱状图，略）
+
+## 脚手架-项目目录说明
 
 - template：handlebars模板文件；
 - mockData：使用mockjs生成的测试数据；
