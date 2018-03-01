@@ -1,5 +1,7 @@
 # Bars Chart
 
+### [demo](http://www.xieyangogo.cn/gogoCharts/pages/bars)
+
 ### 调用方式
 
 ```html
