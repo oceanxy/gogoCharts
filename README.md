@@ -1,8 +1,6 @@
-# Bars Chart
+## [GoGoCharts page](http://www.xieyangogo.cn/root/d3/)
 
-## [gogoCharts page](http://www.xieyangogo.cn/root/d3/)
-
-## 1. 柱状图
+## 1. 柱状图(bar Charts)
 
 #### 调用方式
 
